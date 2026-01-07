@@ -141,6 +141,22 @@ a.Switch.On.SetValue(true)
 
 The library takes care of the rest and notifies all connected clients that the state has changed.
 
+### Pairing code and QR setup
+
+`hap` uses the HomeKit setup code `00102003` by default.
+You can change it before starting the server by setting `server.Pin` to your own 8‑digit code.
+For QR-based onboarding, set a four-character `SetupId` that matches the value encoded in your QR payload so that the advertised setup hash and QR stay in sync.
+
+```go
+server, err := hap.NewServer(fs, a.A)
+if err != nil {
+    log.Panic(err)
+}
+
+server.Pin = "12345678"  // change the pairing code
+server.SetupId = "ABCD"  // used when generating a QR code
+```
+
 ## Multiple Accessories
 
 When you create a server you can specify multiple accessories like this.
