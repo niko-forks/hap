@@ -153,7 +153,7 @@ if err != nil {
     log.Panic(err)
 }
 
-server.Pin = "12345678"  // change the pairing code
+server.Pin = "27182818"  // change the pairing code
 server.SetupId = "ABCD"  // used when generating a QR code
 ```
 
